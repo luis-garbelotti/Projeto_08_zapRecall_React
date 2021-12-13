@@ -29,7 +29,7 @@ export default function TelaSucesso(props) {
 
             <div className="resultado-final">
 
-                <span>PARABÉNS ! <img src={party} /></span>
+                <span>PARABÉNS! <img src={party} /></span>
 
                 <p>Você não esqueceu de nenhum flashcard!</p>
 
