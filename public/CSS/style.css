@@ -1,58 +1,8 @@
-* {
-    box-sizing: border-box;
-}
-
 .root {
+    height: 700px;
     font-family: 'Roboto';
-}
-
-.tela-inicial {
-    width: 100%;
-    height: auto;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.logo-inicio {
-    width: 172px;
-    height: 218px;
-    
-    margin-bottom: 180px;
-    margin-top: 100px;
-}
-
-.praticar {
-    width: 330px;
-    height: 70px;
-    margin-bottom: 80px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border: 3px solid #FFEF61;
-    border-radius: 10px;
-    background: none;
 }
 
-.praticar p {
-    
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 23px;
-    letter-spacing: 0em;
-    text-align: left;
-}
-
-.praticar:hover {
-    cursor: pointer;
-}
-
-.next {
-    margin-left: 5px;
-}
