@@ -38,3 +38,12 @@
     text-align: center;
 
 }
+
+.resultado-final botao p {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
+}

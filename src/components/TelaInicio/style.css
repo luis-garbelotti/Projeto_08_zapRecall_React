@@ -29,7 +29,7 @@
     margin-top: 100px;
 }
 
-.praticar {
+.botao {
     width: 330px;
     height: 70px;
     margin-bottom: 80px;
@@ -43,7 +43,7 @@
     background: none;
 }
 
-.praticar p {
+.botao p {
     
     font-size: 20px;
     font-style: normal;

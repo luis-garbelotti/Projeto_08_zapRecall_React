@@ -8,73 +8,64 @@ export default function Flashcards(props) {
 
     const avaliacoes = ["Aprendi agora", "Não lembrei", "Lembrei com esforço", "Zap!"];
 
-    const [numCard, setNumCard] = useState(0);
-    const [texto, setTexto] = useState(props.deck.perguntas[`${numCard}`].titulo);
-    const [resposta, setResposta] = useState(props.deck.perguntas[`${numCard}`].resposta);
-    const [estadoFrente, setEstadoFrente] = useState("");
-    const [estadoVerso, setEstadoVerso] = useState("escondido");
-    const [buttonTurn, setButtonTurn] = useState("escondido")
-    const [avaliacao, setAvaliacao] = useState("")
-    const [mostraAvaliacao, setMostraAvaliacao] = useState("");
-
     function mostrarResposta() {
 
-        setEstadoFrente("escondido");
-        setEstadoVerso("");
+        props.setEstadoFrente("escondido");
+        props.setEstadoVerso("");
 
     }
 
     function mostrarBotaoProximo() {
 
-        setAvaliacao("escondido");
-        setButtonTurn("");
+        props.setAvaliacao("escondido");
+        props.setButtonTurn("");
 
     }
 
     function aprendiAgora() {
 
-        if (numCard === props.deck.perguntas.length - 1) {
+        if (props.numCard === props.deck.perguntas.length - 1) {
 
             mostrarBotaoProximo();
-            setMostraAvaliacao("aprendi-agora-card")
+            props.setMostraAvaliacao("aprendi-agora-card")
 
         } else {
 
             mostrarBotaoProximo();
-            setMostraAvaliacao("aprendi-agora-card")
-            setNumCard(numCard + 1)
+            props.setMostraAvaliacao("aprendi-agora-card")
+            props.setNumCard(props.numCard + 1)
 
         }
     }
 
     function naoLembrei() {
 
-        if (numCard === props.deck.perguntas.length - 1) {
+        if (props.numCard === props.deck.perguntas.length - 1) {
 
             mostrarBotaoProximo();
-            setMostraAvaliacao("nao-lembrei-card")
+            props.setMostraAvaliacao("nao-lembrei-card")
 
         } else {
 
             mostrarBotaoProximo()
-            setMostraAvaliacao("nao-lembrei-card")
-            setNumCard(numCard + 1)
+            props.setMostraAvaliacao("nao-lembrei-card")
+            props.setNumCard(props.numCard + 1)
 
         }
     }
 
     function lembreiEsforco() {
 
-        if (numCard === props.deck.perguntas.length - 1) {
+        if (props.numCard === props.deck.perguntas.length - 1) {
 
             mostrarBotaoProximo();
-            setMostraAvaliacao("lembrei-esforco-card")
+            props.setMostraAvaliacao("lembrei-esforco-card")
 
         } else {
 
             mostrarBotaoProximo();
-            setMostraAvaliacao("lembrei-esforco-card")
-            setNumCard(numCard + 1)
+            props.setMostraAvaliacao("lembrei-esforco-card")
+            props.setNumCard(props.numCard + 1)
 
         }
     }
@@ -83,16 +74,17 @@ export default function Flashcards(props) {
 
         props.setContaZap(props.contaZap + 1);
 
-        if (numCard === props.deck.perguntas.length - 1) {
+        if (props.numCard === props.deck.perguntas.length - 1) {
 
             mostrarBotaoProximo();
-            setMostraAvaliacao("zap-card")
+            props.setMostraAvaliacao("zap-card")
 
         } else {
 
             mostrarBotaoProximo();
-            setMostraAvaliacao("zap-card")
-            setNumCard(numCard + 1)
+            props.setMostraAvaliacao("zap-card")
+            props.setNumCard(props.numCard + 1)
+            console.log(props.contaZap);
 
         }
     }
@@ -106,21 +98,25 @@ export default function Flashcards(props) {
             if (props.contaZap === props.deck.perguntas.length) {
 
                 props.setEstadoSucesso("");
+                props.setNumCard(0);
+                props.setContaZap(0);
 
             } else {
                 props.setEstadoFracasso("");
+                props.setNumCard(0);
+                props.setContaZap(0);
             }
 
         } else {
 
             props.setContadorPerguntas(props.contadorPerguntas + 1);
-            setEstadoFrente("");
-            setEstadoVerso("escondido");
-            setTexto(props.deck.perguntas[`${numCard}`].titulo)
-            setResposta(props.deck.perguntas[`${numCard}`].resposta)
-            setAvaliacao("");
-            setButtonTurn("escondido");
-            setMostraAvaliacao("");
+            props.setEstadoFrente("");
+            props.setEstadoVerso("escondido");
+            props.setTexto(props.deck.perguntas[`${props.numCard}`].titulo)
+            props.setResposta(props.deck.perguntas[`${props.numCard}`].resposta)
+            props.setAvaliacao("");
+            props.setButtonTurn("escondido");
+            props.setMostraAvaliacao("");
 
         }
     }
@@ -129,32 +125,39 @@ export default function Flashcards(props) {
 
         <div className={`tela-flashcards ${props.estadoFlashcard}`}>
 
-            <img className="mini-logo" src={minilogo} />
-            <div className={`card ${mostraAvaliacao}`}>
+            <img className="mini-logo pointer" src={minilogo} onClick={() => window.location.reload()} />
 
-                <div className={`frente ${estadoFrente}`}>
-                    <p>
+            <div className={`card ${props.mostraAvaliacao}`} data-identifier="flashcard">
+
+                <div className={`frente ${props.estadoFrente}`}>
+
+                    <p data-identifier="counter">
                         {props.contadorPerguntas}/{props.deck.perguntas.length}
                     </p>
-                    <h1>{texto}</h1>
 
-                    <img src={turn} className="pointer" onClick={mostrarResposta} />
+                    <h1>{props.texto}</h1>
+
+                    <img src={turn} className="pointer" onClick={mostrarResposta} data-identifier="arrow" />
+
                 </div>
 
-                <div className={`${estadoVerso} `}>
+                <div className={`${props.estadoVerso} `}>
+
                     <div className="verso">
                         <header >
-                            <h6>
-                                {texto}
-                            </h6>
-                            <p>
+
+                            <h6> {props.texto} </h6>
+
+                            <p data-identifier="counter">
                                 {props.contadorPerguntas}/{props.deck.perguntas.length}
                             </p>
+
                         </header >
 
-                        <h1>{resposta}</h1>
+                        <h1>{props.resposta}</h1>
 
-                        <footer className={`${avaliacao} `}>
+                        <footer className={`${props.avaliacao} `}>
+
                             <div className="aprendi-agora pointer" onClick={aprendiAgora}>
                                 {avaliacoes[0]}
                             </div>
@@ -167,13 +170,16 @@ export default function Flashcards(props) {
                             <div className="zap pointer" onClick={zap}>
                                 {avaliacoes[3]}
                             </div>
+
                         </footer>
-                        <img src={turn} className={`${buttonTurn} pointer`} onClick={proximo} />
+
+                        <img src={turn} className={`${props.buttonTurn} pointer`} onClick={proximo} data-identifier="arrow" />
+
                     </div>
                 </div>
 
             </div>
-        </div >
+        </div>
     )
 }
 

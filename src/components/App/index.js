@@ -6,13 +6,6 @@ import TelaFracasso from "../TelaFracasso";
 
 export default function App() {
 
-    const [inicialEscondida, setInicialEscondida] = useState("");
-    const [estadoFlashcard, setEstadoFlashcard] = useState("escondido")
-    const [contadorPerguntas, setContadorPerguntas] = useState(1);
-    const [estadoSucesso, setEstadoSucesso] = useState("escondido");
-    const [estadoFracasso, setEstadoFracasso] = useState("escondido");
-    const [contaZap, setContaZap] = useState(0);
-
     const deck = {
         titulo: "Praticar React",
         perguntas: [
@@ -59,6 +52,21 @@ export default function App() {
         ]
     }
 
+    const [numCard, setNumCard] = useState(0);
+    const [texto, setTexto] = useState(deck.perguntas[`${numCard}`].titulo);
+    const [resposta, setResposta] = useState(deck.perguntas[`${numCard}`].resposta);
+    const [inicialEscondida, setInicialEscondida] = useState("");
+    const [estadoFlashcard, setEstadoFlashcard] = useState("escondido")
+    const [contadorPerguntas, setContadorPerguntas] = useState(1);
+    const [estadoSucesso, setEstadoSucesso] = useState("escondido");
+    const [estadoFracasso, setEstadoFracasso] = useState("escondido");
+    const [contaZap, setContaZap] = useState(0);
+    const [estadoFrente, setEstadoFrente] = useState("");
+    const [estadoVerso, setEstadoVerso] = useState("escondido");
+    const [mostraAvaliacao, setMostraAvaliacao] = useState("");
+    const [avaliacao, setAvaliacao] = useState("");
+    const [buttonTurn, setButtonTurn] = useState("escondido")
+
     return (
         <>
 
@@ -66,14 +74,55 @@ export default function App() {
                 setEstadoFlashcard={setEstadoFlashcard} deck={deck} />
 
             <Flashcards estadoFlashcard={estadoFlashcard} setEstadoFlashcard={setEstadoFlashcard}
-                deck={deck} contadorPerguntas={contadorPerguntas} setContadorPerguntas={setContadorPerguntas} estadoSucesso={estadoSucesso} setEstadoSucesso=
-                {setEstadoSucesso} contaZap={contaZap} setContaZap={setContaZap} estadoFracasso={estadoFracasso} setEstadoFracasso={setEstadoFracasso} />
+                deck={deck} inicialEscondida={inicialEscondida} setInicialEscondida={setInicialEscondida}
+                contadorPerguntas={contadorPerguntas} setContadorPerguntas={setContadorPerguntas}
+                estadoSucesso={estadoSucesso} setEstadoSucesso={setEstadoSucesso} contaZap={contaZap} setContaZap={setContaZap}
+                estadoFracasso={estadoFracasso} setEstadoFracasso={setEstadoFracasso}
+                numCard={numCard} setNumCard={setNumCard}
+                estadoFrente={estadoFrente} setEstadoFrente={setEstadoFrente}
+                estadoVerso={estadoVerso} setEstadoVerso={setEstadoVerso}
+                texto={texto} setTexto={setTexto}
+                resposta={resposta} setResposta={setResposta}
+                mostraAvaliacao={mostraAvaliacao} setMostraAvaliacao={setMostraAvaliacao}
+                avaliacao={avaliacao} setAvaliacao={setAvaliacao}
+                buttonTurn={buttonTurn} setButtonTurn={setButtonTurn}
+            />
 
             <TelaSucesso estadoSucesso={estadoSucesso} setEstadoSucesso={setEstadoSucesso}
-                contaZap={contaZap} setContaZap={setContaZap} />
+                contaZap={contaZap} setContaZap={setContaZap}
+                inicialEscondida={inicialEscondida} setInicialEscondida={setInicialEscondida}
+                estadoFlashcard={estadoFlashcard} setEstadoFlashcard={setEstadoFlashcard}
+                contadorPerguntas={contadorPerguntas} setContadorPerguntas={setContadorPerguntas}
+                texto={texto} setTexto={setTexto}
+                resposta={resposta} setResposta={setResposta}
+                estadoFrente={estadoFrente} setEstadoFrente={setEstadoFrente}
+                estadoVerso={estadoVerso} setEstadoVerso={setEstadoVerso}
+                numCard={numCard} setNumCard={setNumCard}
+                texto={texto} setTexto={setTexto}
+                resposta={resposta} setResposta={setResposta}
+                deck={deck}
+                mostraAvaliacao={mostraAvaliacao} setMostraAvaliacao={setMostraAvaliacao}
+                avaliacao={avaliacao} setAvaliacao={setAvaliacao}
+                buttonTurn={buttonTurn} setButtonTurn={setButtonTurn}
+            />
 
             <TelaFracasso contaZap={contaZap} setContaZap={setContaZap}
-                estadoFracasso={estadoFracasso} setEstadoFracasso={setEstadoFracasso} />
+                estadoFracasso={estadoFracasso} setEstadoFracasso={setEstadoFracasso}
+                inicialEscondida={inicialEscondida} setInicialEscondida={setInicialEscondida}
+                estadoFlashcard={estadoFlashcard} setEstadoFlashcard={setEstadoFlashcard}
+                contadorPerguntas={contadorPerguntas} setContadorPerguntas={setContadorPerguntas}
+                texto={texto} setTexto={setTexto}
+                resposta={resposta} setResposta={setResposta}
+                estadoFrente={estadoFrente} setEstadoFrente={setEstadoFrente}
+                estadoVerso={estadoVerso} setEstadoVerso={setEstadoVerso}
+                numCard={numCard} setNumCard={setNumCard}
+                texto={texto} setTexto={setTexto}
+                resposta={resposta} setResposta={setResposta}
+                deck={deck}
+                mostraAvaliacao={mostraAvaliacao} setMostraAvaliacao={setMostraAvaliacao}
+                avaliacao={avaliacao} setAvaliacao={setAvaliacao}
+                buttonTurn={buttonTurn} setButtonTurn={setButtonTurn}
+            />
 
         </>
     )

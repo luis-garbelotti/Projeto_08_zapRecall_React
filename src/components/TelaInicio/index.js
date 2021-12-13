@@ -19,9 +19,11 @@ export default function TelaInicio(props) {
 
                 <img src={logo} className="logo-inicio" alt="mini-logo" />
 
-                <button className="praticar pointer" onClick={mostrarPerguntas}>
+                <button className="botao pointer" onClick={mostrarPerguntas} data-identifier="start-zap-recall">
+
                     <p>{props.deck.titulo}</p>
                     <img src={next} alt="next" className="next" />
+
                 </button>
 
             </div>

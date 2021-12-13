@@ -29,6 +29,7 @@
 
 .resultado-final p {
     margin-top: 16px;
+    margin-bottom: 20px;
 
     font-size: 22px;
     font-style: normal;
@@ -36,5 +37,13 @@
     line-height: 26px;
     letter-spacing: 0em;
     text-align: center;
+}
 
+.resultado-final button p {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 23px;
+    letter-spacing: 0em;
+    text-align: left;
 }
